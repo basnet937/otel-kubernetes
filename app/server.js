@@ -4,6 +4,10 @@ let fs = require('fs');
 let bodyParser = require('body-parser');
 let app = express();
 
+const { setupTracing }  = require('./tracing')
+
+setupTracing()
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));

@@ -26,9 +26,7 @@ minikube start
 
 kubectl apply -f webapp.yaml
 
-minikube ip # get the node ip 
-
-curl http://192.168.49.2:30100/ping
+curl http://$(minikube ip):30100/ping # verify that app is up and running
 
 
 ```
