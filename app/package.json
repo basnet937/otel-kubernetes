@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "description": "Sample app for kubernetes",
+  "description": "Demo app for tracing",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

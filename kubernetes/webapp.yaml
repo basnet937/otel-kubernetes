@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: my-app:1.0
+        image: muzammil360/otel-kubernetes/app:1.0
         ports:
         - containerPort: 3000
  
