@@ -4,6 +4,8 @@ const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
 
+process.env.OTEL_LOG_LEVEL = 'verbose'
+
 function setupTracing(){
 const provider = new NodeTracerProvider();
 provider.register();

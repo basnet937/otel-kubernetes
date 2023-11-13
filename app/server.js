@@ -2,11 +2,12 @@ let express = require('express');
 let path = require('path');
 let fs = require('fs');
 let bodyParser = require('body-parser');
+
+// const { setupTracing }  = require('./tracing')
+
+// setupTracing()
+
 let app = express();
-
-const { setupTracing }  = require('./tracing')
-
-setupTracing()
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 
 app.get('/ping', function(req, res){
+  console.log('/ping called')
   res.send({'ping': 'pong'})
 })
 
