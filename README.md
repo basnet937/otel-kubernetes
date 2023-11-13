@@ -2,16 +2,20 @@
 
 
 ## Docker 
-
+### build and run
 ```
-cd app
-docker build -t muzammil360/otel-kubernetes/app:1.0 .
-docker push muzammil360/otel-kubernetes/app:1.0
-docker run -p 3000:3000 -d muzammil360/otel-kubernetes/app:1.0
+docker build -t muzammil360/otel-kubernetes:1.0 .
+docker run -p 3000:3000 -d muzammil360/otel-kubernetes:1.0
 
 curl http://127.0.0.1:3000/ping # test that docker is working
 
 ```
+### push
+```
+docker login -u muzammil360 --password-stdin
+docker push muzammil360/otel-kubernetes:1.0
+```
+
 
 # Deploying kubernetes
 After installing docker and minikube, run following 
