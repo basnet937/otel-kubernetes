@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 
 app.get('/ping', function(req, res){
   console.log('/ping called')
+  console.log(`process.env.OTEL_LOG_LEVEL: ${process.env.OTEL_LOG_LEVEL}`)
   res.send({'ping': 'pong'})
 })
 
