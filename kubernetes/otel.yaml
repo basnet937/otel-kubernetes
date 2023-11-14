@@ -9,6 +9,7 @@ data:
       otlp:
         protocols: 
           grpc:
+            endpoint: ${env:MY_POD_IP}:4317
     processors:
     exporters:
       logging:
@@ -50,7 +51,13 @@ spec:
         args:
         - --config=/conf/collector.yaml
         ports:
-        - containerPort: 4317        
+        - containerPort: 4317   
+        env:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP             
         volumeMounts:
         - mountPath: /conf
           name: collector-config                
