@@ -25,6 +25,7 @@ cd kubernetes
 minikube start 
 
 kubectl apply -f webapp.yaml
+kubectl apply -f otel.yaml
 
 curl http://$(minikube ip):30100/ping # verify that app is up and running
 

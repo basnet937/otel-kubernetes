@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: otel-collector-config
+  name: collector-config
 data:
   collector.yaml: |
     receivers:
@@ -47,15 +47,24 @@ spec:
       containers:
       - name: otel-collector
         image: otel/opentelemetry-collector:0.88.0
-        resources:
-          limits:
-            memory: 200Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
-        # volumeMounts:
-        # - name: varlog
-        #   mountPath: /var/log
+        args:
+        - --config=/conf/collector.yaml
+        volumeMounts:
+        - mountPath: /conf
+          name: collector-config                
+        # resources:
+        #   limits:
+        #     memory: 200Mi
+        #   requests:
+        #     cpu: 100m
+        #     memory: 200Mi
+      volumes:
+      - configMap:
+        name: collector-config
+          items:
+          - key: collector.yaml
+            path: collector.yaml
+          name: collector-config
       # it may be desirable to set a high priority class to ensure that a DaemonSet Pod
       # preempts running Pods
       # priorityClassName: important
