@@ -4,8 +4,11 @@
 ## Docker 
 ### build and run
 ```
-docker build -t muzammil360/otel-kubernetes:1.0 .
-docker run -p 3000:3000 -d muzammil360/otel-kubernetes:1.0
+version=1.01
+docker build -t muzammil360/otel-kubernetes:${version} . \
+&& docker push muzammil360/otel-kubernetes:${version}
+ 
+docker run -p 3000:3000 -d muzammil360/otel-kubernetes:1.01
 
 curl http://127.0.0.1:3000/ping # test that docker is working
 
