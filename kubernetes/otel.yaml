@@ -60,11 +60,12 @@ spec:
         #     memory: 200Mi
       volumes:
       - configMap:
-        name: collector-config
           items:
           - key: collector.yaml
             path: collector.yaml
           name: collector-config
+        name: collector-config
+
       # it may be desirable to set a high priority class to ensure that a DaemonSet Pod
       # preempts running Pods
       # priorityClassName: important
