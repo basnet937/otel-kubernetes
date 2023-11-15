@@ -72,6 +72,7 @@ spec:
                 fieldPath: status.podIP
           - name: AWS_ACCESS_KEY_ID
             value: AKIAQRSKKQKO3B2ZB3MG
+          # WARNING: Secret Access key is added here for dev only. Never put prod keys in sourcecode  
           - name: AWS_SECRET_ACCESS_KEY
             value: nqJvvxslNFNIrK6ShChqw5JeOZ111vEN8t9IVzuc                                            
         volumeMounts:
