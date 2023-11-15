@@ -16,7 +16,10 @@ data:
       prometheus:
         endpoint: 127.0.0.1:8889
         namespace: default
+    extensions:
+      health_check:        
     service:
+      extensions: [health_check]
       pipelines:
         traces:
           receivers: [otlp]
@@ -57,7 +60,8 @@ spec:
         args:
         - --config=/conf/collector.yaml
         ports:
-        - containerPort: 4317   
+        - containerPort: 4317   # otlp grpc
+        - containerPort: 13133  # health check
         env:
           - name: MY_POD_IP
             valueFrom:
@@ -97,9 +101,15 @@ kind: Service
 metadata:
   name: otel-collector-service
 spec:
+  type: NodePort
   selector:
     app: otel-collector
   ports:
     - protocol: TCP
       port: 4317
       targetPort: 4317
+      nodePort: 32317
+    - protocol: TCP
+      port: 13133
+      targetPort: 13133
+      nodePort: 32133
