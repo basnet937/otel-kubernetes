@@ -1,5 +1,7 @@
 # otel-kubernetes
 
+# How does it work? 
+
 
 ## Docker 
 ### build and run
@@ -43,7 +45,7 @@ curl http://$(minikube ip):30100/ping # verify that app is up and running
 ## misl useful commands
 ```
 # send dummy test traces
-docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 1s --otlp-endpoint http://$(minikube ip):32317
+docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 1s --otlp-endpoint $(minikube ip):32317
 ```
 
 ### interact with cluster
