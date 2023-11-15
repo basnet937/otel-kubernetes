@@ -43,5 +43,5 @@ curl http://$(minikube ip):30100/ping # verify that app is up and running
 ## misl useful commands
 ```
 # send dummy test traces
-docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 5s
+docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 1s
 ```

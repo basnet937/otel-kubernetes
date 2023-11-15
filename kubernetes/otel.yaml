@@ -13,6 +13,9 @@ data:
     processors:
     exporters:
       logging:
+      prometheus:
+        endpoint: prometheus:8889
+        namespace: default
     service:
       pipelines:
         traces:
@@ -22,7 +25,7 @@ data:
         metrics:
           receivers: [otlp]
           processors: []
-          exporters: []
+          exporters: [prometheus]
 ---
 apiVersion: apps/v1
 kind: DaemonSet
