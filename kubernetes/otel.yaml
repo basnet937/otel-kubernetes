@@ -58,7 +58,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: otel-collector
-        image: otel/opentelemetry-collector:0.88.0
+        image: public.ecr.aws/aws-observability/aws-otel-collector:v0.35.0
         args:
         - --config=/conf/collector.yaml
         ports:
