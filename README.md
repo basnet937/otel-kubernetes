@@ -43,5 +43,19 @@ curl http://$(minikube ip):30100/ping # verify that app is up and running
 ## misl useful commands
 ```
 # send dummy test traces
-docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 1s
+docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 1s --otlp-endpoint http://$(minikube ip):32317
+```
+
+### interact with cluster
+```
+kubectl apply -f webapp.yaml
+kubectl apply -f otel.yaml
+
+kubectl get all
+
+
+kubectl logs -p pod/otel-collector-daemonset-s4gvp --previous=false
+kubectl logs -p pod/webapp-deployment-5fc5c9f59f-jjlql --previous=false
+
+
 ```

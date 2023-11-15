@@ -21,7 +21,11 @@ spec:
         - containerPort: 3000
         env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: otel-collector-service        
+          value: otel-collector-service
+        - name: OTEL_COL_OTLP_ENDPOINT
+          value: otel-collector-service
+
+                   
  
 ---
 apiVersion: v1
