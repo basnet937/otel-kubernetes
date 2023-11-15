@@ -14,7 +14,7 @@ data:
     exporters:
       logging:
       prometheus:
-        endpoint: prometheus:8889
+        endpoint: 127.0.0.1:8889
         namespace: default
     service:
       pipelines:
