@@ -13,6 +13,8 @@ data:
     processors:
     exporters:
       logging:
+      awsxray:
+        region: eu-north-1
       prometheus:
         endpoint: 127.0.0.1:8889
         namespace: default
@@ -24,7 +26,7 @@ data:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
+          exporters: [logging, awsxray]
         metrics:
           receivers: [otlp]
           processors: []
