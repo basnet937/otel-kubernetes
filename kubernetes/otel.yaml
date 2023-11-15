@@ -19,7 +19,10 @@ data:
           receivers: [otlp]
           processors: []
           exporters: [logging]
-
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: []
 ---
 apiVersion: apps/v1
 kind: DaemonSet
