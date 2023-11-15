@@ -103,7 +103,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: otel-collector
+    name: otel-collector
   ports:
     - name: grpc
       protocol: TCP
