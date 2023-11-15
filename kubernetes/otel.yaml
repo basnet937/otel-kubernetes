@@ -15,8 +15,6 @@ data:
       logging:
       awsxray:
         region: eu-north-1
-        access_key_id: AKIAQRSKKQKO3B2ZB3MG
-        secret_access_key: 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
       prometheus:
         endpoint: 127.0.0.1:8889
         namespace: default
@@ -71,7 +69,11 @@ spec:
             valueFrom:
               fieldRef:
                 apiVersion: v1
-                fieldPath: status.podIP             
+                fieldPath: status.podIP
+          - name: AWS_ACCESS_KEY_ID
+            value: AKIAQRSKKQKO3B2ZB3MG
+          - name: AWS_SECRET_ACCESS_KEY
+            value: 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                                            
         volumeMounts:
         - mountPath: /conf
           name: collector-config                
