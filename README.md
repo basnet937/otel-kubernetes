@@ -39,3 +39,9 @@ curl http://$(minikube ip):30100/ping # verify that app is up and running
 `minikube delete --all`
 ### stop the kubernetes
 `minikube stop`
+
+## misl useful commands
+```
+# send dummy test traces
+docker run --network=host ghcr.io/open-telemetry/opentelemetry-collector-contrib/telemetrygen:latest traces --otlp-insecure --duration 5s
+```

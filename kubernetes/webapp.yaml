@@ -19,6 +19,9 @@ spec:
         image: muzammil360/otel-kubernetes:1.01
         ports:
         - containerPort: 3000
+        env:
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: otel-collector-service        
  
 ---
 apiVersion: v1
