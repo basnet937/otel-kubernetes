@@ -21,7 +21,7 @@ spec:
         - containerPort: 3000
         env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: otel-collector-service
+          value: http://otel-collector-service.default.svc.cluster.local:4317
         - name: OTEL_EXPORTER_OTLP_PROTOCOL
           value: grpc
 
