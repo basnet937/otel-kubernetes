@@ -6,11 +6,11 @@
 ## Docker 
 ### build and run
 ```
-version=1.01
+version=1.02
 docker build -t muzammil360/otel-kubernetes:${version} . \
 && docker push muzammil360/otel-kubernetes:${version}
  
-docker run -p 3000:3000 -d muzammil360/otel-kubernetes:1.01
+docker run --network=host --rm -e OTEL_EXPORTER_OTLP_ENDPOINT="http://$(minikube ip):32317" -e OTEL_EXPORTER_OTLP_PROTOCOL=grpc muzammil360/otel-kubernetes:${version} 
 
 curl http://127.0.0.1:3000/ping # test that docker is working
 

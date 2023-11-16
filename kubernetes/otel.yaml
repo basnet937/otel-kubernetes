@@ -103,6 +103,8 @@ spec:
 
 
 ---
+# NOTE: this service uses NodePort for debugging/development. 
+# This should be an internal service in production environment  
 apiVersion: v1
 kind: Service
 metadata:
@@ -116,7 +118,7 @@ spec:
       protocol: TCP
       port: 4317
       targetPort: 4317
-      nodePort: 32317
+      nodePort: 32317 
     - name: healthcheck
       protocol: TCP
       port: 13133
