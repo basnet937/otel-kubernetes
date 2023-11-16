@@ -1,11 +1,6 @@
 let express = require('express');
-let path = require('path');
-let fs = require('fs');
 let bodyParser = require('body-parser');
 
-// const { setupTracing }  = require('./tracing')
-
-// setupTracing()
 
 let app = express();
 
@@ -17,9 +12,17 @@ app.use(bodyParser.json());
 
 app.get('/ping', function(req, res){
   console.log('/ping called')
-  console.log(`process.env.OTEL_LOG_LEVEL: ${process.env.OTEL_LOG_LEVEL}`)
   res.send({'ping': 'pong'})
 })
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get('/rolldice', (req, res) => {
+  console.log('/rolldice called')
+  res.send(getRandomNumber(1, 6).toString());
+});
 
 app.listen(3000, function () {
   console.log("app listening on port 3000!");
