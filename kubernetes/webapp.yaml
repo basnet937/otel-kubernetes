@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: muzammil360/otel-kubernetes:1.01
+        image: muzammil360/otel-kubernetes:1.02
         ports:
         - containerPort: 3000
         env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: otel-collector-service
-        - name: OTEL_COL_OTLP_ENDPOINT
-          value: otel-collector-service
+        - name: OTEL_EXPORTER_OTLP_PROTOCOL
+          value: grpc
 
                    
  
