@@ -1,5 +1,8 @@
 # otel-kubernetes
-Deploy otel-collector in kube cluster and send the traces to AWS xray 
+The goal of this project is to integrate application tracing with AWS Xray. We will use otel-collector to collect the traces from the application and send them to AWS xray. 
+- [architecture-simple.drawio](./docs/architecture-simple.drawio.png) shows project overview 
+- [architecture-kubernetes.drawio](./docs/architecture-kubernetes.drawio.png) shows implementation approach 
+
 
 # How does it work? 
 ## Send traces from app to collector
