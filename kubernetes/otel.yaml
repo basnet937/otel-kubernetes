@@ -32,6 +32,16 @@ data:
           processors: []
           exporters: [prometheus]
 ---
+# WARNING: Never put prod keys in sourcecode. 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: collector-secrets
+data:
+  AWS_XRAY_WRITE_SECRET_ACCESS_KEY: bnFKdnZ4c2xORk5Jcks2U2hDaHF3NUplT1oxMTF2RU44dDlJVnp1Yw==
+
+
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -71,19 +81,16 @@ spec:
                 apiVersion: v1
                 fieldPath: status.podIP
           - name: AWS_ACCESS_KEY_ID
-            value: AKIAQRSKKQKO3B2ZB3MG
-          # WARNING: Secret Access key is added here for dev only. Never put prod keys in sourcecode  
+            value: AKIAQRSKKQKO3B2ZB3MG  
           - name: AWS_SECRET_ACCESS_KEY
-            value: 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                                            
+            valueFrom:
+              secretKeyRef:
+                name: collector-secrets
+                key: AWS_XRAY_WRITE_SECRET_ACCESS_KEY
+
         volumeMounts:
         - mountPath: /conf
           name: collector-config                
-        # resources:
-        #   limits:
-        #     memory: 200Mi
-        #   requests:
-        #     cpu: 100m
-        #     memory: 200Mi
       volumes:
       - configMap:
           items:
@@ -96,10 +103,6 @@ spec:
       # preempts running Pods
       # priorityClassName: important
       terminationGracePeriodSeconds: 30 # allows graceful termination
-      # volumes:
-      # - name: varlog
-      #   hostPath:
-      #     path: /var/log
 
 
 ---
